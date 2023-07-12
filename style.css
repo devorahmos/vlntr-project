@@ -16,6 +16,7 @@ body {
   font-family: "Ubuntu Condensed", sans-serif;
   background-color: #f6f6e9;
 }
+
 .header,
 .footer {
   height: 10%;
@@ -23,12 +24,14 @@ body {
   display: flex;
   align-items: center;
 }
+
 .page-title {
   font-family: "Ubuntu Condensed", sans-serif;
   color: #fffff0;
   margin-left: 1.5rem;
   font-size: 3rem;
 }
+
 .sign-in {
   font-family: "Open Sans", sans-serif;
   color: #fffff0;
@@ -38,50 +41,61 @@ body {
   margin-right: 1.5rem;
   flex: 1;
 }
+
 .email {
   font-family: "Open Sans", sans-serif;
   color: #fffff0;
   font-size: 1.3rem;
   margin-left: 1.5rem;
 }
+
 .icons {
   color: #fffff0;
   flex: 1;
   margin-right: 1.5rem;
 }
+
 .event-wrapper {
   padding: 5rem 20rem;
   background-color: #f6f6e9;
   height: 100%;
 }
+
 .event {
   display: flex;
+  flex-direction: row nowrap;
   height: 15rem;
   padding: 2rem;
-  border-radius: 3rem;
+  border-radius: 2rem;
   background-color: #fffff0;
 }
+
 .event-left {
   flex: 2;
 }
+
 .event-middle {
   flex: 1;
   position: relative;
 }
+
 .event-right {
   flex: 1;
 }
+
 .event-title {
   font-family: "League Spartan", sans-serif;
   color: #1e7976;
-  font-size: 2.2rem;
+  font-size: 2rem;
   font-weight: 800;
 }
+
 .event-subtitle {
   font-family: "Open Sans", sans-serif;
   font-size: 1.3rem;
   transform: translateY(-0.75rem);
 }
+
 .tags {
   background-color: #f6f6e9;
   padding: 0.1rem;
@@ -93,6 +107,7 @@ body {
   justify-content: center;
   transform: translateY(-0.5rem);
 }
+
 .date {
   position: absolute;
   bottom: 0;
@@ -135,4 +150,85 @@ body {
   background-color: #fff;
   height: 2rem;
   width: 10rem;
+}
+
+.page-wrapper {
+  background-color: #f6f6e9;
+  padding-top: 10rem;
+  padding-bottom: 1rem;
+}
+
+.yellow-header {
+  background-color: #f2dd80;
+  height: 10rem;
+}
+
+.event-header {
+  display: flex;
+  flex: 1;
+  font-family: "League Spartan", sans-serif;
+  color: #1e7976;
+  font-size: 4rem;
+  font-weight: 800;
+  margin-left: 3rem;
+  align-self: center;
+}
+
+.image-container {
+  height: 18rem;
+  margin-right: 2rem;
+  transform: translateY(-25%);
+}
+
+.text-container {
+  display: grid;
+  width: 25rem;
+  margin: 3rem;
+  row-gap: 1rem;
+}
+
+.ask-text {
+  font-family: "League Spartan", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.detail-text {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.3rem;
+}
+
+.about-container {
+  width: 50%;
+  margin: 3rem;
+}
+
+.register-box {
+  background-color: #fff;
+  height: 2rem;
+  width: 15rem;
+}
+
+.comment-box {
+  width: 20rem;
+}
+
+.register-btn {
+  background-color: #1e7976;
+  border-radius: 1.5rem;
+  border: none;
+  padding: 0.75rem;
+  color: #f6f6e9;
+  width: 7.5rem;
+  margin-left: 1rem;
+}
+
+.back-arrow > a {
+  text-decoration-line: none;
+  color: #000;
+  font-weight: 600;
+  font-size: 20px;
+  margin-left: 2rem;
+  cursor: pointer;
 }
