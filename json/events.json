@@ -1,0 +1,52 @@
+[
+    {
+        "id": 1,
+        "eventName": "Cleaning the Beach",
+        "organizerId": 1,
+        "location": "Frishman Beach, Tel Aviv",
+        "date": 1690437600000,
+        "description": "We will meet up on Frishman Beach, Friday morning at 9 AM. We will be working to clean up our beaches to help our environment. Supplies will be provided + water and snacks! Can't wait to see you there!",
+        "image": "",
+        "tags": ["environment", "outdoors"]
+    },
+    {
+        "id": 2,
+        "eventName": "Dog Adoption Fair",
+        "organizerId": 2,
+        "location": "HaYarkon Park, Tel Aviv",
+        "date": 1690365600000,
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras fermentum imperdiet placerat. Vestibulum eu consectetur velit. Sed neque quam, efficitur sollicitudin est eget, mattis venenatis nisi. Mauris pretium tortor nisl.",
+        "image": "",
+        "tags": ["pets", "outdoors"]
+    },
+    {
+        "id": 3,
+        "eventName": "Food Packaging",
+        "organizerId": 3,
+        "location": "Ha'Masger 44, Tel Aviv",
+        "date": 1691074800000,
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras fermentum imperdiet placerat. Vestibulum eu consectetur velit. Sed neque quam, efficitur sollicitudin est eget, mattis venenatis nisi. Mauris pretium tortor nisl.",
+        "image": "",
+        "tags": ["community", "social", "food"]
+    },
+    {
+        "id": 4,
+        "eventName": "Clothing Drive",
+        "organizerId": 4,
+        "location": "Jabotinsky 50, Ramat Gan",
+        "date": 1691229600000,
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras fermentum imperdiet placerat. Vestibulum eu consectetur velit. Sed neque quam, efficitur sollicitudin est eget, mattis venenatis nisi. Mauris pretium tortor nisl.",
+        "image": "",
+        "tags": ["community", "social"]
+    },
+    {
+        "id": 5,
+        "eventName": "Visiting the Elderly",
+        "organizerId": 5,
+        "location": "Bialik 33, Holon",
+        "date": 1691924400000,
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras fermentum imperdiet placerat. Vestibulum eu consectetur velit. Sed neque quam, efficitur sollicitudin est eget, mattis venenatis nisi. Mauris pretium tortor nisl.",
+        "image": "",
+        "tags": ["community", "social", "elderly"]
+    }
+]

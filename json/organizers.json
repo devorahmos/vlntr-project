@@ -1,0 +1,27 @@
+[
+    {
+        "id": 1,
+        "name": "CleanOcean",
+        "description": "CleanOcean is an organization dedicated to safeguarding the environment through various initiatives. Our primary objective is to ensure the cleanliness and preservation of our oceans, with a strong emphasis on maintaining pristine beaches."
+    },
+    {
+        "id": 2,
+        "name": "Dog Family",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vitae lorem quis tortor elementum consectetur."
+    },
+    {
+        "id": 3,
+        "name": "Latet",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vitae lorem quis tortor elementum consectetur."
+    },
+    {
+        "id": 4,
+        "name": "ClothesLove",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vitae lorem quis tortor elementum consectetur."
+    },
+    {
+        "id": 5,
+        "name": "NursingHome",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vitae lorem quis tortor elementum consectetur."
+    }
+]
