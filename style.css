@@ -24,8 +24,13 @@ body {
   align-items: center;
 }
 
+.header {
+  top: 0%;
+}
+
 .page-title {
   font-family: "Ubuntu Condensed", sans-serif;
+  font-weight: 900;
   color: #fffff0;
   margin-left: 1.5rem;
   font-size: 3rem;
@@ -55,9 +60,8 @@ body {
 }
 
 .event-wrapper {
-  padding: 5rem 20rem;
+  padding: 1rem 20rem;
   background-color: #f6f6e9;
-  height: 100%;
 }
 
 .event {
@@ -65,6 +69,7 @@ body {
   flex-direction: row nowrap;
   height: 15rem;
   padding: 2rem;
+  margin-bottom: 2.5rem;
   border-radius: 2rem;
   background-color: #fffff0;
 }
@@ -97,13 +102,10 @@ body {
 
 .tags {
   background-color: #f6f6e9;
-  padding: 0.1rem;
-  width: 2rem;
+  padding: 0.3rem;
   font-family: "Open Sans", sans-serif;
   font-size: 0.7rem;
   border-radius: 50rem;
-  display: flex;
-  justify-content: center;
   transform: translateY(-0.5rem);
 }
 
@@ -155,7 +157,6 @@ body {
   background-color: #f6f6e9;
   padding-top: 10rem;
   padding-bottom: 1rem;
-  height: 100%;
 }
 
 .yellow-header {
@@ -225,15 +226,67 @@ body {
 }
 
 .back-arrow > a {
+  display: flex;
+  align-items: center;
   text-decoration-line: none;
   color: #000;
   font-weight: 600;
   font-size: 20px;
   margin-left: 2rem;
-  cursor: pointer;
 }
 
 .main-background {
   background-color: #f2dd80;
   height: 100%;
+}
+
+.logo-text {
+  font-family: "Ubuntu Condensed", sans-serif;
+  font-size: 8rem;
+  font-weight: 900;
+
+}
+
+.page-container {
+  background-color: #f6f6e9;
+  padding: 6rem;
+}
+
+.event-box {
+  margin-right: 30rem;
+}
+
+.hostproject-text {
+  font-family: "League Spartan", sans-serif;
+  font-weight: 700;
+  font-size: 2rem;
+  color: #ED9556;
+  margin-bottom: 0.8rem;
+}
+
+.post-box {
+  background-color: #fff;
+  height: 30rem;
+}
+
+.text-area {
+  width: 50%;
+}
+
+.publish-input {
+  width: 70%;
+}
+
+.publish-btn {
+  background-color: #ED9556;
+  border-radius: 1.5rem;
+  border: none;
+  margin-top: 1rem;
+  padding: 0.75rem;
+  color: #f6f6e9;
+  width: 7.5rem;
+}
+
+.publish-comment {
+  height: 70%;
 }
