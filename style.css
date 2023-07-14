@@ -110,10 +110,10 @@ body {
   transform: translateY(-0.5rem);
 }
 
-/* .date {
+.date {
   position: absolute;
   bottom: 0;
-} */
+}
 
 .date,
 .address {
@@ -166,14 +166,10 @@ body {
 }
 
 .event-header {
-  display: flex;
-  flex: 1;
   font-family: "League Spartan", sans-serif;
   color: #1e7976;
   font-size: 4rem;
   font-weight: 800;
-  margin-left: 3rem;
-  align-self: center;
 }
 
 .image-container {
