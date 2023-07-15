@@ -13,7 +13,7 @@ let organizerArr;
 let orgObject;
 
 function formatDate(date) {
-    return `${DAYS[date.getDay()]}, ${MONTHS[date.getMonth()]} ${date.getDate()} ${date.getFullYear()}<br>${("0" + date.getHours()).slice(-2)}:${("0" + date.getMinutes()).slice(-2)}`;
+    return `${DAYS[date.getDay()]}, ${MONTHS[date.getMonth()]} ${date.getDate()} ${date.getFullYear()} @ ${("0" + date.getHours()).slice(-2)}:${("0" + date.getMinutes()).slice(-2)}`;
 }
 
 function getOrganizerById(id) {
@@ -74,3 +74,4 @@ window.onload = () => {
     id = params.get("id");
     loadEventInfo();
 }
+
