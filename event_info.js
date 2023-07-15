@@ -1,10 +1,14 @@
-const headingElement = document.querySelector("#event-header");
-const imgElement = document.querySelector("#event-image");
+const headingElement = document.querySelector("#title");
+const orgNameElement = document.querySelector("#name");
+const imgElement = document.querySelector("#image");
 const tagsDiv = document.querySelector("#tags");
-const locationElement = document.querySelector("#location");
-const timeElement = document.querySelector("#time");
+const locationElement = document.querySelector("#address");
+const timeElement = document.querySelector("#date");
 const descriptionElement = document.querySelector("#description");
-const orgDetailsElement = document.querySelector("#about-organization");
+const orgDetailsElement = document.querySelector("#about-us");
+
+const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+const DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
 let id;
 let eventsArr;
@@ -15,11 +19,12 @@ let orgObject;
 function formatDate(date) {
     return `${DAYS[date.getDay()]}, ${MONTHS[date.getMonth()]} ${date.getDate()} ${date.getFullYear()} @ ${("0" + date.getHours()).slice(-2)}:${("0" + date.getMinutes()).slice(-2)}`;
 }
+function getEventById(id) {
+    return eventsArr.find((event) => event.id == id);
+}
 
 function getOrganizerById(id) {
-    return organizerArr.find(
-        (org) => org.id === id
-    );
+    return organizerArr.find((org) => org.id == id);
 }
 
 function displayTags(tagsArr) {
@@ -32,12 +37,6 @@ function displayTags(tagsArr) {
     return tagsHTML;
 }
 
-function getOrganizerById(id) {
-    return organizerArr.find(
-        (org) => org.id === id
-    );
-}
-
 async function loadEventInfo() {
     try {
         const eventsResponse = await fetch("./json/events.json");
@@ -46,32 +45,46 @@ async function loadEventInfo() {
         const organizersResponse = await fetch("./json/organizers.json");
         organizerArr = await organizersResponse.json();
 
-        eventObject = eventsArr[id];
+        eventObject = getEventById(id);
         orgObject = getOrganizerById(eventObject.organizerId);
 
     } catch (e) {
-
+        console.log(e);
     }
 
     displayInfo();
 }
 
-function displayInfo() {
-    headingElement.innetText = "Heading";
-    
-    // let timeString = formatDate(new Date(eventObject.date));
+function getTagsHTML(tagsArr) {
+    let tagsHTML = "";
 
-    // headingElement.innetText = eventObject.eventName;
-    // locationElement.innetText = eventObject.location;
-    // timeElement.innerHTML = timeString;
-    // descriptionElement.innetText = eventObject.description;
-    // orgDetailsElement.innetText = orgObject.name;
+    for (let i of tagsArr) {
+        tagsHTML += `<p class="tags">${i}</p>`;
+    }
+
+    return tagsHTML;
+}
+
+function displayInfo() {
+    
+    
+    let timeString = formatDate(new Date(eventObject.date));
+
+    headingElement.innerText = eventObject.eventName;
+    locationElement.innerText = eventObject.location;
+    timeElement.innerHTML = timeString;
+    descriptionElement.innerText = eventObject.description;
+    orgDetailsElement.innerText = orgObject.description;
+
+    tagsDiv.innerHTML = getTagsHTML(eventObject.tags);
 
 }
 
+
 window.onload = () => {
+    
     const params = new URLSearchParams(window.location.search);
-    id = params.get("id");
+    id = params.get("e");
     loadEventInfo();
 }
 
