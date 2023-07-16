@@ -75,6 +75,10 @@ body {
   background-color: #fffff0;
 }
 
+  .event:hover{
+    transform: scale(1.05);
+}
+
 .event-left {
   flex: 2;
 }
@@ -122,8 +126,6 @@ body {
 
 .see-more {
   font-size: 1rem;
-  /* font-weight: 900; */
-  /* text-decoration-line: none; */
   align-self: center;
   color: #000;
   cursor: pointer;
@@ -149,9 +151,15 @@ body {
 
 .input-box {
   background-color: #fff;
+  color: grey;
   height: 2rem;
   width: 10rem;
 }
+
+.map {
+  transform: translateY(4.3rem);
+}
+
 
 .page-wrapper {
   background-color: #f6f6e9;

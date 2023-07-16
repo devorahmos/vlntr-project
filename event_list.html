@@ -51,7 +51,6 @@
         <input
           type="date"
           name="date"
-          placeholder="Date"
           class="input-box border-0 p-1"
         />
       </div>
@@ -63,49 +62,74 @@
           placeholder="City"
         />
       </div>
-      <div class="border border-black">
-        <input
-          type="text"
-          name="type"
-          class="input-box border-0 p-1"
-          placeholder="Category"
-        />
+      <div class="dropdown">
+        <button
+          class="input-box d-flex justify-content-between align-items-center dropdown-toggle p-1 border border-black"
+          type="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          Categories
+        </button>
+        <ul class="dropdown-menu">
+          <li class="d-flex ms-1 align-items-center">
+            <input type="checkbox" id="selectAll"/>
+            <div class="dropdown-item">Select All</div>
+          </li>
+          <li class="d-flex ms-1 align-items-center">
+            <input type="checkbox" id="check1"/>
+            <div class="dropdown-item">Children</div>
+          </li>
+          <li class="d-flex ms-1 align-items-center">
+            <input type="checkbox" id="check2" /><a
+              class="dropdown-item"
+              href="#"
+              >Dogs</a
+            >
+          </li>
+          <li class="d-flex ms-1 align-items-center">
+            <input type="checkbox" id="check3" /><a
+              class="dropdown-item" 
+              href="#"
+              >Elderly</a
+            >
+          </li>
+          <li class="d-flex ms-1 align-items-center">
+            <input type="checkbox" id="check4" /><a
+              class="dropdown-item"
+              href="#"
+              >Pets</a
+            >
+          </li>
+          <li class="d-flex ms-1 align-items-center">
+            <input type="checkbox" id="check5" /><a
+              class="dropdown-item"
+              href="#"
+              >Outdoors</a
+            >
+          </li>
+          <li class="d-flex ms-1 align-items-center">
+            <input type="checkbox" id="check6" /><a
+              class="dropdown-item"
+              href="#"
+              >Social</a
+            >
+          </li>
+        </ul>
       </div>
-      <!-- <form>
-        <div class="multipleSelection">
-            <div class="selectBox" 
-                onclick="showCheckboxes()">
-                <select>
-                    <option>Select options</option>
-                </select>
-                <div class="overSelect"></div>
+       <div class="map"><p>
+          <button class="input-box d-flex justify-content-between align-items-center p-1 border border-black" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
+            <img src="./Images/Location.svg" alt="location-icon" class="border-0" /><div class="d-flex ms-1 flex-grow-1">Map</div>
+          </button>
+        </p>
+        <div style="min-height: 120px;">
+          <div class="collapse collapse-horizontal" id="collapseWidthExample">
+            <div class="card card-body" style="width: 300px;">
+            Google Maps
             </div>
-  
-            <div id="checkBoxes">
-                <label for="first">
-                    <input type="checkbox" id="first" />
-                    checkBox1
-                </label>
-                  
-                <label for="second">
-                    <input type="checkbox" id="second" />
-                    checkBox2
-                </label>
-                <label for="third">
-                    <input type="checkbox" id="third" />
-                    checkBox3
-                </label>
-                <label for="fourth">
-                    <input type="checkbox" id="fourth" />
-                    checkBox4
-                </label>
-            </div>
+          </div>
         </div>
-    </form> -->
-      <div class="input-box p-1 d-flex align-items-center border border-black">
-        <img src="./Images/Location.svg" alt="location-icon" class="border-0" />
-        <div class="ms-2">Map</div>
-      </div>
+       </div>
     </fieldset>
     <div class="event-wrapper">
       <!-- dummy item: <div class="event shadow">
@@ -196,5 +220,6 @@
       crossorigin="anonymous"
     ></script>
     <script src="event_list.js"></script>
+    <script src="search.js"></script>
   </body>
 </html>
