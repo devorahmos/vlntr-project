@@ -7,15 +7,15 @@ function formatDate(date) {
     return `${DAYS[date.getDay()]}, ${MONTHS[date.getMonth()]} ${date.getDate()} ${date.getFullYear()} @ ${("0" + date.getHours()).slice(-2)}:${("0" + date.getMinutes()).slice(-2)}`;
 }
 
-function getOrganizerById(id, organizerArr) {
-    return organizerArr.find(
+function getOrganizerById(id, organizersArr) {
+    return organizersArr.find(
         (org) => org.id === id
     );
 }
 
 function displayTags(tagsArr) {
     let tagsHTML = "";
-
+    
     for (let tag of tagsArr) {
         tagsHTML += `<p class="tags">${tag}</p>`;
     }
@@ -27,7 +27,7 @@ function displayEventsList(eventsArr, organizersArr) {
     for (let event of eventsArr) {
 
         const timeString = formatDate(new Date(event.date));
-
+        
         container.innerHTML += `<div class="event shadow">
                                     <div class="event-left d-flex flex-column">
                                         <div class="d-flex flex-column">
@@ -53,7 +53,7 @@ function displayEventsList(eventsArr, organizersArr) {
                                         <div class="text-center flex-grow-1">
                                             <img src="https://placehold.co/100x100" class="rounded" alt="..." />
                                         </div>
-                                        <a href="./event_info.html?e=${current.id}" class="see-more">. . .</a>
+                                        <a href="./event_info.html?e=${event.id}" class="see-more">. . .</a>
                                     </div>
                                 </div>`;
     }
