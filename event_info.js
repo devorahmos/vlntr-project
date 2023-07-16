@@ -19,6 +19,7 @@ let orgObject;
 function formatDate(date) {
     return `${DAYS[date.getDay()]}, ${MONTHS[date.getMonth()]} ${date.getDate()} ${date.getFullYear()} @ ${("0" + date.getHours()).slice(-2)}:${("0" + date.getMinutes()).slice(-2)}`;
 }
+
 function getEventById(id) {
     return eventsArr.find((event) => event.id == id);
 }
@@ -66,8 +67,8 @@ function getTagsHTML(tagsArr) {
 }
 
 function displayInfo() {
-    
-    
+
+
     let timeString = formatDate(new Date(eventObject.date));
 
     headingElement.innerText = eventObject.eventName;
@@ -82,7 +83,7 @@ function displayInfo() {
 
 
 window.onload = () => {
-    
+
     const params = new URLSearchParams(window.location.search);
     id = params.get("e");
     loadEventInfo();
