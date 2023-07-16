@@ -70,7 +70,7 @@ function displayEventsList() {
                                         <div class="text-center flex-grow-1">
                                             <img src="https://placehold.co/100x100" class="rounded" alt="..." />
                                         </div>
-                                        <a href="./event_info.html?e=${current.id}" class="see-more">. . .</a>
+                                        <a href="./event_info.html?e=${current.id}" class="see-more">See more</a>
                                     </div>
                                 </div>`;
     }

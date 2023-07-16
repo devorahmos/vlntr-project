@@ -111,8 +111,7 @@ body {
 }
 
 .date {
-  position: absolute;
-  bottom: 0;
+  align-self: flex-end;
 }
 
 .date,
@@ -123,8 +122,8 @@ body {
 
 .see-more {
   font-size: 1rem;
-  font-weight: 900;
-  text-decoration-line: none;
+  /* font-weight: 900; */
+  /* text-decoration-line: none; */
   align-self: center;
   color: #000;
   cursor: pointer;
@@ -250,8 +249,15 @@ body {
 }
 
 @keyframes beat {
-  0%, 50%, 100% { transform: scale(1, 1); }
-  30%, 80% { transform: scale(0.92, 0.95); }
+  0%,
+  50%,
+  100% {
+    transform: scale(1, 1);
+  }
+  30%,
+  80% {
+    transform: scale(0.92, 0.95);
+  }
 }
 
 .subtitle-main {
