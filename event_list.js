@@ -1,5 +1,3 @@
-let eventsArr;
-let organizerArr;
 const container = document.querySelector(".event-wrapper");
 
 const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -9,7 +7,7 @@ function formatDate(date) {
     return `${DAYS[date.getDay()]}, ${MONTHS[date.getMonth()]} ${date.getDate()} ${date.getFullYear()} @ ${("0" + date.getHours()).slice(-2)}:${("0" + date.getMinutes()).slice(-2)}`;
 }
 
-function getOrganizerById(id) {
+function getOrganizerById(id, organizerArr) {
     return organizerArr.find(
         (org) => org.id === id
     );
@@ -18,46 +16,31 @@ function getOrganizerById(id) {
 function displayTags(tagsArr) {
     let tagsHTML = "";
 
-    for (let i of tagsArr) {
-        tagsHTML += `<p class="tags">${i}</p>`;
+    for (let tag of tagsArr) {
+        tagsHTML += `<p class="tags">${tag}</p>`;
     }
 
     return tagsHTML;
 }
 
-async function loadEventList() {
-    try {
-        const eventsResponse = await fetch("./json/events.json");
-        eventsArr = await eventsResponse.json();
+function displayEventsList(eventsArr, organizersArr) {
+    for (let event of eventsArr) {
 
-        const organizersResponse = await fetch("./json/organizers.json");
-        organizerArr = await organizersResponse.json();
-
-    } catch (e) {
-
-    }
-
-    displayEventsList();
-}
-
-function displayEventsList() {
-    for (let current of eventsArr) {
-
-        let timeString = formatDate(new Date(current.date));
+        const timeString = formatDate(new Date(event.date));
 
         container.innerHTML += `<div class="event shadow">
                                     <div class="event-left d-flex flex-column">
                                         <div class="d-flex flex-column">
-                                            <div class="event-title d-flex">${current.eventName}</div>
-                                            <div class="event-subtitle d-flex">${getOrganizerById(current.organizerId).name}</div>
+                                            <div class="event-title d-flex">${event.eventName}</div>
+                                            <div class="event-subtitle d-flex">${getOrganizerById(event.organizerId, organizersArr).name}</div>
                                             <div class="d-flex gap-2 mt-1">
-                                                ${displayTags(current.tags)}
+                                                ${displayTags(event.tags)}
                                             </div>
                                         </div>
                                         <div class="location d-flex mt-3">
                                             <div class="d-flex align-items-center gap-1">
                                                 <img src="./Images/Location.svg" alt="location-icon" class="border-0"/>
-                                                <div class="address">${current.location}</div>
+                                                <div class="address">${event.location}</div>
                                             </div>
                                         </div>
                                     </div>
@@ -70,9 +53,23 @@ function displayEventsList() {
                                         <div class="text-center flex-grow-1">
                                             <img src="https://placehold.co/100x100" class="rounded" alt="..." />
                                         </div>
-                                        <a href="./event_info.html?e=${current.id}" class="see-more">See more</a>
+                                        <a href="./event_info.html?e=${current.id}" class="see-more">. . .</a>
                                     </div>
                                 </div>`;
+    }
+}
+
+async function loadEventList() {
+    try {
+        const eventsResponse = await fetch("./json/events.json");
+        const eventsArr = await eventsResponse.json();
+
+        const organizersResponse = await fetch("./json/organizers.json");
+        const organizersArr = await organizersResponse.json();
+
+        displayEventsList(eventsArr, organizersArr);
+    } catch (e) {
+
     }
 }
 
