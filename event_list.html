@@ -48,12 +48,7 @@
         </button>
       </div>
       <div class="border border-black">
-        <input
-          type="date"
-          name="date"
-          placeholder="Date"
-          class="input-box border-0 p-1"
-        />
+        <input type="date" name="date" class="input-box border-0 p-1" />
       </div>
       <div class="border border-black">
         <input
@@ -63,48 +58,84 @@
           placeholder="City"
         />
       </div>
-      <div class="border border-black">
-        <input
-          type="text"
-          name="type"
-          class="input-box border-0 p-1"
-          placeholder="Category"
-        />
+      <div class="dropdown">
+        <button
+          class="input-box d-flex justify-content-between align-items-center dropdown-toggle p-1 border border-black"
+          type="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          Categories
+        </button>
+        <ul class="dropdown-menu">
+          <li class="d-flex ms-1 align-items-center">
+            <input type="checkbox" class="checkbox-item" id="selectAll" />
+            <label class="dropdown-item">Select All</label>
+          </li>
+          <li class="d-flex ms-1 align-items-center">
+            <input type="checkbox" class="checkbox-item" id="check1" />
+            <label class="dropdown-item" for="check1">Children</label>
+          </li>
+          <li class="d-flex ms-1 align-items-center">
+            <input type="checkbox" class="checkbox-item" id="check2" /><label
+              class="dropdown-item"
+              for="check2"
+              >Dogs</label
+            >
+          </li>
+          <li class="d-flex ms-1 align-items-center">
+            <input type="checkbox" class="checkbox-item" id="check3" /><label
+              class="dropdown-item"
+              for="check3"
+              >Elderly</label
+            >
+          </li>
+          <li class="d-flex ms-1 align-items-center">
+            <input type="checkbox" class="checkbox-item" id="check4" /><label
+              class="dropdown-item"
+              for="check4"
+              >Pets</label
+            >
+          </li>
+          <li class="d-flex ms-1 align-items-center">
+            <input type="checkbox" id="check5" /><label
+              class="dropdown-item"
+              for="check5"
+              >Outdoors</label
+            >
+          </li>
+          <li class="d-flex ms-1 align-items-center">
+            <input type="checkbox" id="check6" /><label
+              class="dropdown-item"
+              for="check6"
+              >Social</label
+            >
+          </li>
+        </ul>
       </div>
-      <!-- <form>
-        <div class="multipleSelection">
-            <div class="selectBox" 
-                onclick="showCheckboxes()">
-                <select>
-                    <option>Select options</option>
-                </select>
-                <div class="overSelect"></div>
-            </div>
-  
-            <div id="checkBoxes">
-                <label for="first">
-                    <input type="checkbox" id="first" />
-                    checkBox1
-                </label>
-                  
-                <label for="second">
-                    <input type="checkbox" id="second" />
-                    checkBox2
-                </label>
-                <label for="third">
-                    <input type="checkbox" id="third" />
-                    checkBox3
-                </label>
-                <label for="fourth">
-                    <input type="checkbox" id="fourth" />
-                    checkBox4
-                </label>
-            </div>
+      <div class="map">
+        <p>
+          <button
+            class="input-box d-flex justify-content-between align-items-center p-1 border border-black"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapseWidthExample"
+            aria-expanded="false"
+            aria-controls="collapseWidthExample"
+          >
+            <img
+              src="./Images/Location.svg"
+              alt="location-icon"
+              class="border-0"
+            />
+            <div class="d-flex ms-1 flex-grow-1">Map</div>
+          </button>
+        </p>
+        <div style="min-height: 120px">
+          <div class="collapse collapse-horizontal" id="collapseWidthExample">
+            <div class="card card-body" style="width: 300px">Google Maps</div>
+          </div>
         </div>
-    </form> -->
-      <div class="input-box p-1 d-flex align-items-center border border-black">
-        <img src="./Images/Location.svg" alt="location-icon" class="border-0" />
-        <div class="ms-2">Map</div>
       </div>
     </fieldset>
     <div class="event-wrapper">
@@ -196,5 +227,6 @@
       crossorigin="anonymous"
     ></script>
     <script src="event_list.js"></script>
+    <script src="search.js"></script>
   </body>
 </html>
