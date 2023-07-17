@@ -9,7 +9,7 @@ function formatDate(date) {
 
 function getOrganizerById(id, organizersArr) {
     return organizersArr.find(
-        (org) => org.id === id
+        (org) => org.id == id
     );
 }
 
@@ -51,7 +51,7 @@ function displayEventsList(eventsArr, organizersArr) {
                                     </div>
                                     <div class="event-right d-flex flex-column">
                                         <div class="text-center flex-grow-1">
-                                            <img src="https://placehold.co/100x100" class="rounded" alt="..." />
+                                            <img src="${event.image}" class="rounded" alt="..." />
                                         </div>
                                         <a href="./event_info.html?e=${event.id}" class="see-more">See more</a>
                                     </div>
@@ -61,15 +61,15 @@ function displayEventsList(eventsArr, organizersArr) {
 
 async function loadEventList() {
     try {
-        const eventsResponse = await fetch("./json/events.json");
+        const eventsResponse = await fetch("https://64b517e8f3dbab5a95c6afd3.mockapi.io/events/");
         const eventsArr = await eventsResponse.json();
 
-        const organizersResponse = await fetch("./json/organizers.json");
+        const organizersResponse = await fetch("https://64b517e8f3dbab5a95c6afd3.mockapi.io/organizers/");
         const organizersArr = await organizersResponse.json();
 
         displayEventsList(eventsArr, organizersArr);
-    } catch (e) {
-
+    } catch (error) {
+        console.log(error);
     }
 }
 
