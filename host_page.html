@@ -67,10 +67,12 @@
       </div>
       <div>
         <div class="hostproject-text">Create New Project:</div>
+        <form>
         <div class="publish-input">
           <div class="post-box d-flex flex-column p-3 gap-2 border">
             <input
               class="post-input p-2 border"
+              id="host-title"
               type="text"
               name="text"
               placeholder="Event Title:"
@@ -78,6 +80,7 @@
             />
             <input
               class="post-input p-2 border"
+              id="host-address"
               type="text"
               name="address"
               placeholder="Address:"
@@ -85,6 +88,7 @@
             />
             <input
               class="post-input p-2 border"
+              id="host-date"
               type="text"
               name="date"
               placeholder="Date & Time:"
@@ -93,20 +97,23 @@
             <div class="publish-comment d-flex gap-2">
               <textarea
                 class="text-area p-2 border"
+                id="host-description"
                 name="message"
                 placeholder="Event Description:"
               ></textarea>
               <textarea
                 class="text-area p-2 border"
+                id="host-about"
                 name="message"
                 placeholder="About Us:"
               ></textarea>
             </div>
           </div>
           <div class="d-flex justify-content-end align-items-center">
-            <button type="submit" class="publish-btn">Publish</button>
+            <button type="submit" class="publish-btn" id="publish">Publish</button>
           </div>
         </div>
+      </form>
       </div>
     </div>
     <footer class="footer">
