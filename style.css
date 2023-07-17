@@ -75,8 +75,8 @@ body {
   background-color: #fffff0;
 }
 
-  .event:hover{
-    transform: scale(1.05);
+.event:hover {
+  transform: scale(1.05);
 }
 
 .event-left {
@@ -159,7 +159,6 @@ body {
 .map {
   transform: translateY(4.3rem);
 }
-
 
 .page-wrapper {
   background-color: #f6f6e9;
