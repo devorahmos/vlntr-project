@@ -6,6 +6,7 @@ const locationElement = document.querySelector("#address");
 const timeElement = document.querySelector("#date");
 const descriptionElement = document.querySelector("#description");
 const orgDetailsElement = document.querySelector("#about-us");
+const imageElement = document.querySelector("#image");
 
 const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 const DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -35,6 +36,7 @@ function getTagsHTML(tagsArr) {
 function displayInfo(eventObject, orgObject) {
     headingElement.innerText = eventObject.eventName;
     orgNameElement.innerText = orgObject.name;
+    imageElement.src = eventObject.image;
     locationElement.innerText = eventObject.location;
     timeElement.innerHTML = formatDate(new Date(eventObject.date));
     descriptionElement.innerText = eventObject.description;
@@ -43,8 +45,7 @@ function displayInfo(eventObject, orgObject) {
 
 }
 
-async function loadEventInfo(id) {
-    
+async function loadEventInfo(id) {  
     try {
         const eventsResponse = await fetch("./json/events.json");
         const eventsArr = await eventsResponse.json();
@@ -61,10 +62,26 @@ async function loadEventInfo(id) {
     }
 }
 
+async function fetchEventFromAPI(id) {
+    try {
+        const apiEventResponse = await fetch(`https://64b517e8f3dbab5a95c6afd3.mockapi.io/events/${id}`);
+        const eventObject = await apiEventResponse.json();
+
+        const apiOrgResponse = await fetch(`https://64b517e8f3dbab5a95c6afd3.mockapi.io/organizers/${eventObject.organizerId}`);
+        const orgObject = await apiOrgResponse.json();
+
+        displayInfo(eventObject, orgObject);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+//////End of functions
+
 window.onload = () => {
 
     const params = new URLSearchParams(window.location.search);
     const id = params.get("e");
-    loadEventInfo(id);
+    fetchEventFromAPI(id);
 }
 
