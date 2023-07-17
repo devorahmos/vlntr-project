@@ -33,7 +33,7 @@ function displayEventsList(eventsArr, organizersArr) {
                                         <div class="d-flex flex-column">
                                             <div class="event-title d-flex">${event.eventName}</div>
                                             <div class="event-subtitle d-flex">${getOrganizerById(event.organizerId, organizersArr).name}</div>
-                                            <div class="d-flex gap-2 mt-1">
+                                            <div class="tags-input d-flex gap-2 mt-1">
                                                 ${displayTags(event.tags)}
                                             </div>
                                         </div>
