@@ -48,7 +48,7 @@
         </button>
       </div>
       <div class="border border-black">
-        <input type="date" name="date" class="input-box border-0 p-1" />
+        <input type="date" name="date" class="input-box border-0 p-1" id="date"/>
       </div>
       <div class="border border-black">
         <input
@@ -73,43 +73,32 @@
             <label class="dropdown-item">Select All</label>
           </li>
           <li class="d-flex ms-1 align-items-center">
-            <input type="checkbox" class="checkbox-item" id="check1" />
-            <label class="dropdown-item" for="check1">Children</label>
+            <input type="checkbox" class="checkbox-item" name="tagMatch" id="community" value="community"/>
+            <label class="dropdown-item" for="community">Community</label>
           </li>
           <li class="d-flex ms-1 align-items-center">
-            <input type="checkbox" class="checkbox-item" id="check2" /><label
-              class="dropdown-item"
-              for="check2"
-              >Dogs</label
-            >
+            <input type="checkbox" class="checkbox-item" name="tagMatch" id="environment" value="environment"/>
+            <label class="dropdown-item" for="environment">Environment</label>
           </li>
           <li class="d-flex ms-1 align-items-center">
-            <input type="checkbox" class="checkbox-item" id="check3" /><label
-              class="dropdown-item"
-              for="check3"
-              >Elderly</label
-            >
+            <input type="checkbox" class="checkbox-item" name="tagMatch" id="elderly" value="elderly"/>
+            <label class="dropdown-item" for="elderly">Elderly</label>
           </li>
           <li class="d-flex ms-1 align-items-center">
-            <input type="checkbox" class="checkbox-item" id="check4" /><label
-              class="dropdown-item"
-              for="check4"
-              >Pets</label
-            >
+            <input type="checkbox" class="checkbox-item" name="tagMatch" id="pets" value="pets"/>
+            <label class="dropdown-item" for="pets">Pets</label>
           </li>
           <li class="d-flex ms-1 align-items-center">
-            <input type="checkbox" id="check5" /><label
-              class="dropdown-item"
-              for="check5"
-              >Outdoors</label
-            >
+            <input type="checkbox" class="checkbox-item" name="tagMatch" id="outdoors" value="outdoors"/>
+            <label class="dropdown-item" for="outdoors">Outdoors</label>
           </li>
           <li class="d-flex ms-1 align-items-center">
-            <input type="checkbox" id="check6" /><label
-              class="dropdown-item"
-              for="check6"
-              >Social</label
-            >
+            <input type="checkbox" class="checkbox-item" name="tagMatch" id="social" value="social"/>
+            <label class="dropdown-item" for="social">Social</label>
+          </li>
+          <li class="d-flex ms-1 align-items-center">
+            <input type="checkbox" class="checkbox-item" name="food" id="food" value="food"/>
+            <label class="dropdown-item" for="food">Food</label>
           </li>
         </ul>
       </div>
@@ -226,7 +215,7 @@
       integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
       crossorigin="anonymous"
     ></script>
-    <script src="event_list.js"></script>
-    <script src="search.js"></script>
+    <script src="./event_list.js"></script>
+    <script src="./search.js"></script>
   </body>
 </html>

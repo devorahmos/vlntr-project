@@ -1,29 +1,27 @@
-//search input item
-
-const searchInput = document.querySelector('.search');
-
+const searchInput = document.querySelector(".search");
+const searchDate = document.querySelector("#date");
 
 function handleSearch() {
   const searchTerm = searchInput.value.toLowerCase();
-  const eventElements = document.querySelectorAll('.event');
+  const eventElements = document.querySelectorAll(".event");
   const filteredEvents = filterEvents(eventElements, searchTerm);
   displayFilteredEvents(eventElements, filteredEvents);
 }
 
 function filterEvents(eventElements, searchTerm) {
   return Array.from(eventElements).filter((eventElement) => {
-    const eventTitle = eventElement.querySelector('.event-title');
-    const eventSubtitle = eventElement.querySelector('.event-subtitle');
-    const tagsInput = eventElement.querySelector('.tags-input');
-    const addressInput = eventElement.querySelector('.address');
-    const dateInput = eventElement.querySelector('.date');
+    const eventTitle = eventElement.querySelector(".event-title");
+    const eventSubtitle = eventElement.querySelector(".event-subtitle");
+    const tagsContent = eventElement.querySelector(".tags-input");
+    const addressContent = eventElement.querySelector(".address");
+    const dateContent = eventElement.querySelector(".date");
 
     return (
       eventTitle.textContent.toLowerCase().includes(searchTerm) ||
       eventSubtitle.textContent.toLowerCase().includes(searchTerm) ||
-      tagsInput.textContent.toLowerCase().includes(searchTerm) ||
-      addressInput.textContent.toLowerCase().includes(searchTerm) ||
-      dateInput.textContent.toLowerCase().includes(searchTerm)
+      tagsContent.textContent.toLowerCase().includes(searchTerm) ||
+      addressContent.textContent.toLowerCase().includes(searchTerm) ||
+      dateContent.textContent.toLowerCase().includes(searchTerm)
     );
   });
 }
@@ -31,15 +29,35 @@ function filterEvents(eventElements, searchTerm) {
 function displayFilteredEvents(eventElements, filteredEvents) {
   eventElements.forEach((eventElement) => {
     if (filteredEvents.includes(eventElement)) {
-      eventElement.style.display = 'flex';
+      eventElement.style.display = "flex";
     } else {
-      eventElement.style.display = 'none';
+      eventElement.style.display = "none";
     }
   });
 }
 
-searchInput.addEventListener('input', handleSearch);
+function filterDate() {
+  const searchDate = document.querySelector("#date");
+  const dateInput = searchDate.value;
 
+  const eventElements = document.querySelectorAll(".event");
+
+  const filteredEvents = Array.from(eventElements).filter((eventElement) => {
+    const dateContent = eventElement.querySelector(".date");
+    const eventDate = new Date(dateContent.textContent.trim());
+
+    return (
+      eventDate.getFullYear() === Number(dateInput.split("-")[0]) &&
+      eventDate.getMonth() === Number(dateInput.split("-")[1]) - 1 &&
+      eventDate.getDate() === Number(dateInput.split("-")[2])
+    );
+  });
+
+  displayFilteredEvents(eventElements, filteredEvents);
+}
+
+searchInput.addEventListener("input", handleSearch);
+searchDate.addEventListener("input", filterDate);
 
 //checkbox
 
