@@ -31,7 +31,7 @@ function filterEvents(eventElements, searchTerm) {
 function displayFilteredEvents(eventElements, filteredEvents) {
   eventElements.forEach((eventElement) => {
     if (filteredEvents.includes(eventElement)) {
-      eventElement.style.display = 'block';
+      eventElement.style.display = 'flex';
     } else {
       eventElement.style.display = 'none';
     }
