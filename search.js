@@ -36,12 +36,11 @@ function displayFilteredEvents(eventElements, filteredEvents) {
   });
 }
 
+//date input
+
 function filterDate() {
-  const searchDate = document.querySelector("#date");
   const dateInput = searchDate.value;
-
   const eventElements = document.querySelectorAll(".event");
-
   const filteredEvents = Array.from(eventElements).filter((eventElement) => {
     const dateContent = eventElement.querySelector(".date");
     const eventDate = new Date(dateContent.textContent.trim());
@@ -60,6 +59,29 @@ searchInput.addEventListener("input", handleSearch);
 searchDate.addEventListener("input", filterDate);
 
 //checkbox
+
+function handleTagFilter() {
+  const checkboxes = document.querySelectorAll('.checkbox-item');
+  const eventElements = document.querySelectorAll('.event');
+
+  const selectedTags = Array.from(checkboxes)
+    .filter(checkbox => checkbox.checked)
+    .map(checkbox => checkbox.value);
+
+  const filteredEvents = Array.from(eventElements).filter(eventElement => {
+    const tagsContent = eventElement.querySelector('.tags-input');
+    const tags = Array.from(tagsContent.querySelectorAll('.tags')).map(tag => tag.textContent);
+
+    return selectedTags.every(tag => tags.includes(tag));
+  });
+
+  displayFilteredEvents(eventElements, filteredEvents);
+}
+
+const checkboxes = document.querySelectorAll('.checkbox-item');
+checkboxes.forEach(checkbox => {
+  checkbox.addEventListener('change', handleTagFilter);
+});
 
 const selectAllCheckbox = document.getElementById("selectAll");
 
