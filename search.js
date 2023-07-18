@@ -1,22 +1,21 @@
 //search input item
 
-const searchInput = document.querySelector('.search');
-
+const searchInput = document.querySelector(".search");
 
 function handleSearch() {
   const searchTerm = searchInput.value.toLowerCase();
-  const eventElements = document.querySelectorAll('.event');
+  const eventElements = document.querySelectorAll(".event");
   const filteredEvents = filterEvents(eventElements, searchTerm);
   displayFilteredEvents(eventElements, filteredEvents);
 }
 
 function filterEvents(eventElements, searchTerm) {
   return Array.from(eventElements).filter((eventElement) => {
-    const eventTitle = eventElement.querySelector('.event-title');
-    const eventSubtitle = eventElement.querySelector('.event-subtitle');
-    const tagsInput = eventElement.querySelector('.tags-input');
-    const addressInput = eventElement.querySelector('.address');
-    const dateInput = eventElement.querySelector('.date');
+    const eventTitle = eventElement.querySelector(".event-title");
+    const eventSubtitle = eventElement.querySelector(".event-subtitle");
+    const tagsInput = eventElement.querySelector(".tags-input");
+    const addressInput = eventElement.querySelector(".address");
+    const dateInput = eventElement.querySelector(".date");
 
     return (
       eventTitle.textContent.toLowerCase().includes(searchTerm) ||
@@ -31,15 +30,18 @@ function filterEvents(eventElements, searchTerm) {
 function displayFilteredEvents(eventElements, filteredEvents) {
   eventElements.forEach((eventElement) => {
     if (filteredEvents.includes(eventElement)) {
-      eventElement.style.display = 'block';
+      eventElement.style.display = "flex";
     } else {
-      eventElement.style.display = 'none';
+      eventElement.style.display = "none";
     }
   });
 }
 
-searchInput.addEventListener('input', handleSearch);
+searchInput.addEventListener("input", handleSearch);
 
+//date 
+
+// function filterDate ()
 
 //checkbox
 
