@@ -57,6 +57,10 @@ function displayEventsList(eventsArr, organizersArr) {
                                     </div>
                                 </div>`;
     }
+
+    let eventElements = document.querySelectorAll(".event");
+    console.log(eventElements)
+
 }
 
 async function loadEventList() {

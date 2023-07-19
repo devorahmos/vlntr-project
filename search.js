@@ -1,5 +1,6 @@
 const searchInput = document.querySelector(".search");
 const searchDate = document.querySelector("#date");
+let eventElements = document.querySelectorAll(".event");
 
 function handleSearch() {
   const searchTerm = searchInput.value.toLowerCase();

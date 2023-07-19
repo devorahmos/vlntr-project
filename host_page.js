@@ -1,5 +1,5 @@
-const form = document.querySelector("#add-event-form");
-const eventsContainer = document.querySelector("#events-of-organizer");
+const form = document.querySelector("#addForm");
+const eventsContainer = document.querySelector("#event-container");
 
 ///// List Display Functions:
 
@@ -55,6 +55,8 @@ function displayEventsList(eventsArr, id) {
                                     </div>
                             </div>`;
   }
+  let eventElements = document.querySelectorAll(".event");
+
 }
 
 async function fetchEventsByOrgId(id) {
@@ -62,7 +64,13 @@ async function fetchEventsByOrgId(id) {
     const eventsResponse = await fetch(`https://64b517e8f3dbab5a95c6afd3.mockapi.io/events`);
     const eventsArr = await eventsResponse.json();
 
-    // console.log(eventsArr);
+    // const eventsOfOrg = [];
+
+    // for(let event of eventsArr){
+    //   if(event.organizerId == id){
+    //     eventsOfOrg.push
+    //   }
+    // }
 
     displayEventsList(eventsArr);
   } catch (error) {
@@ -76,10 +84,10 @@ async function addEvent(event) {
   event.preventDefault();
 
   const newEventObject = {
-    eventName: document.querySelector("#event-title").value,
-    description: document.querySelector("#description").value,
+    eventName: document.querySelector("#host-name").value,
+    description: document.querySelector("#host-description").value,
     organizerId: 1, //TODO: find how to make it as the current org
-    location: document.querySelector("#location").value,
+    location: document.querySelector("#host-location").value,
   };
 
   try {
