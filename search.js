@@ -90,7 +90,7 @@ function toggleCheckboxes() {
     '.dropdown-menu input[type="checkbox"]'
   );
 
-  for (var i = 0; i < checkboxes.length; i++) {
+  for (let i = 0; i < checkboxes.length; i++) {
     checkboxes[i].checked = selectAllCheckbox.checked;
   }
 }

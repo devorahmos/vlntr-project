@@ -59,18 +59,20 @@
     <div>
       <div class="hostproject-text">Create New Project:</div>
       <div class="publish-input">
+        <form>
         <div class="post-box d-flex flex-column p-3 gap-2 border">
-          <input class="post-input p-2 border" type="text" name="text" placeholder="Event name:" required />
-          <input class="post-input p-2 border" type="text" name="address" placeholder="Location:" required />
-          <input class="post-input p-2 border" type="text" name="date" placeholder="Date:" required />
-          <input class="post-input p-2 border" type="text" name="date" placeholder="Tags:" required />
+          <input class="post-input p-2 border" type="text" name="text" id="host-name" placeholder="Event name:" required />
+          <input class="post-input p-2 border" type="text" name="address" id="host-location" placeholder="Location:" required />
+          <input class="post-input p-2 border" type="text" name="date" id="host-date" placeholder="Date:" required />
+          <input class="post-input p-2 border" type="text" name="date" id="host-tags" placeholder="Tags:" required />
           <div class="publish-comment d-flex gap-2">
-            <textarea class="text-area p-2 border" name="message" placeholder="Description:"></textarea>
+            <textarea class="text-area p-2 border" name="message" id="host-description" placeholder="Description:"></textarea>
           </div>
         </div>
         <div class="d-flex justify-content-end align-items-center">
           <button type="submit" class="publish-btn">Publish</button>
         </div>
+      </form>
       </div>
     </div>
   </div>
