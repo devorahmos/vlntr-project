@@ -138,9 +138,8 @@ body {
 
 .search-box {
   background-color: #fff;
-  width: 20rem;
+  width: 43.2rem;
   height: 2rem;
-  gap: 1rem;
 }
 
 .search-icon {
@@ -154,10 +153,6 @@ body {
   color: grey;
   height: 2rem;
   width: 10rem;
-}
-
-.map {
-  transform: translateY(4.3rem);
 }
 
 .page-wrapper {

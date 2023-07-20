@@ -29,8 +29,9 @@
       <span class="sign-in">SIGN IN</span>
     </header>
     <fieldset
-      class="search-nav d-flex gap-3 align-items-center justify-content-center"
+      class="search-nav d-flex align-items-center justify-content-center"
     >
+    <div class="d-flex flex-column gap-3">
       <div
         class="search-box d-flex align-items-center rounded p-1 border border-black"
       >
@@ -47,9 +48,11 @@
           />
         </button>
       </div>
-      <div class="border border-black">
+      <div class="d-flex gap-3"><div><div class="border border-black">
         <input type="date" name="date" class="input-box border-0 p-1" id="date"/>
       </div>
+      </div>
+      <div>
       <div class="border border-black">
         <input
           type="text"
@@ -59,6 +62,7 @@
           id="city"
         />
       </div>
+    </div>
       <div class="dropdown">
         <button
           class="input-box d-flex justify-content-between align-items-center dropdown-toggle p-1 border border-black"
@@ -118,14 +122,16 @@
               alt="location-icon"
               class="border-0"
             />
-            <div class="d-flex ms-1 flex-grow-1">Map</div>
+            <span class="d-flex ms-1 flex-grow-1">Map</span>
           </button>
         </p>
-        <div style="min-height: 120px">
+        <!-- <div style="min-height: 120px"> -->
           <div class="collapse collapse-horizontal" id="collapseWidthExample">
             <div class="card card-body" style="width: 300px">Google Maps</div>
           </div>
-        </div>
+        <!-- </div> -->
+      </div>
+    </div>
       </div>
     </fieldset>
     <div class="event-wrapper">
