@@ -1,29 +1,21 @@
 const searchInput = document.querySelector(".search");
 const searchDate = document.querySelector("#date");
-let eventElements = document.querySelectorAll(".event");
+const searchCity = document.querySelector("#city");
+let eventElements;
 
 function handleSearch() {
   const searchTerm = searchInput.value.toLowerCase();
-  const eventElements = document.querySelectorAll(".event");
+  eventElements = document.querySelectorAll(".event");
   const filteredEvents = filterEvents(eventElements, searchTerm);
   displayFilteredEvents(eventElements, filteredEvents);
 }
 
 function filterEvents(eventElements, searchTerm) {
+  const regex = new RegExp(searchTerm, "i");
   return Array.from(eventElements).filter((eventElement) => {
-    const eventTitle = eventElement.querySelector(".event-title");
-    const eventSubtitle = eventElement.querySelector(".event-subtitle");
-    const tagsContent = eventElement.querySelector(".tags-input");
-    const addressContent = eventElement.querySelector(".address");
-    const dateContent = eventElement.querySelector(".date");
-
-    return (
-      eventTitle.textContent.toLowerCase().includes(searchTerm) ||
-      eventSubtitle.textContent.toLowerCase().includes(searchTerm) ||
-      tagsContent.textContent.toLowerCase().includes(searchTerm) ||
-      addressContent.textContent.toLowerCase().includes(searchTerm) ||
-      dateContent.textContent.toLowerCase().includes(searchTerm)
-    );
+    const eventContent = eventElement.textContent.toLowerCase();
+    const matches = eventContent.match(regex);
+    return matches !== null;
   });
 }
 
@@ -37,11 +29,9 @@ function displayFilteredEvents(eventElements, filteredEvents) {
   });
 }
 
-//date input
-
 function filterDate() {
   const dateInput = searchDate.value;
-  const eventElements = document.querySelectorAll(".event");
+  eventElements = document.querySelectorAll(".event");
   const filteredEvents = Array.from(eventElements).filter((eventElement) => {
     const dateContent = eventElement.querySelector(".date");
     const eventDate = new Date(dateContent.textContent.trim());
@@ -56,15 +46,29 @@ function filterDate() {
   displayFilteredEvents(eventElements, filteredEvents);
 }
 
-searchInput.addEventListener("input", handleSearch);
-searchDate.addEventListener("input", filterDate);
+function filterCity() {
+  const cityInput = searchCity.value.trim();
+  if (cityInput === "") {
+    showAllEvents();
+  } else {
+    const filteredEvents = Array.from(eventElements).filter((eventElement) => {
+      const addressElement = eventElement.querySelector(".address");
+      const addressValue = addressElement.textContent.toLowerCase();
+      const addressParts = addressValue.split(",");
+      const cityName = addressParts[addressParts.length - 1]
+        .trim()
+        .toLowerCase();
 
-//checkbox
+      return cityName.includes(cityInput.toLowerCase());
+    });
+
+    displayFilteredEvents(eventElements, filteredEvents);
+  }
+}
 
 function handleTagFilter() {
   const checkboxes = document.querySelectorAll(".checkbox-item");
-  const eventElements = document.querySelectorAll(".event");
-
+  eventElements = document.querySelectorAll(".event");
   const selectedTags = Array.from(checkboxes)
     .filter((checkbox) => checkbox.checked)
     .map((checkbox) => checkbox.value);
@@ -81,21 +85,22 @@ function handleTagFilter() {
   displayFilteredEvents(eventElements, filteredEvents);
 }
 
-const checkboxes = document.querySelectorAll(".checkbox-item");
-checkboxes.forEach((checkbox) => {
-  checkbox.addEventListener("change", handleTagFilter);
-});
-
-const selectAllCheckbox = document.getElementById("selectAll");
-
 function toggleCheckboxes() {
-  const checkboxes = document.querySelectorAll(
-    '.dropdown-menu input[type="checkbox"]'
-  );
+  const checkboxes = document.querySelectorAll(".checkbox-item");
 
   for (let i = 0; i < checkboxes.length; i++) {
     checkboxes[i].checked = selectAllCheckbox.checked;
   }
 }
 
+const checkboxes = document.querySelectorAll(".checkbox-item");
+checkboxes.forEach((checkbox) => {
+  checkbox.addEventListener("change", handleTagFilter);
+});
+
+const selectAllCheckbox = document.getElementById("selectAll");
 selectAllCheckbox.addEventListener("click", toggleCheckboxes);
+
+searchInput.addEventListener("input", handleSearch);
+searchDate.addEventListener("input", filterDate);
+searchCity.addEventListener("input", filterCity);
