@@ -1,3 +1,6 @@
+const params = new URLSearchParams(window.location.search);
+const id = params.get("org");
+
 const form = document.querySelector("#addForm");
 const eventsContainer = document.querySelector("#event-container");
 
@@ -21,7 +24,6 @@ function displayTags(tagsArr) {
 }
 
 function displayEventsList(eventsArr, id) {
-  
 
   for (let event of eventsArr) {
 
@@ -55,24 +57,17 @@ function displayEventsList(eventsArr, id) {
                                     </div>
                             </div>`;
   }
-  let eventElements = document.querySelectorAll(".event");
 
 }
 
-async function fetchEventsByOrgId(id) {
+async function fetchEventsByOrgId(orgId) {
   try {
     const eventsResponse = await fetch(`https://64b517e8f3dbab5a95c6afd3.mockapi.io/events`);
     const eventsArr = await eventsResponse.json();
 
-    // const eventsOfOrg = [];
+    const eventsOfOrg = eventsArr.filter((current) => current.organizerId == orgId);
 
-    // for(let event of eventsArr){
-    //   if(event.organizerId == id){
-    //     eventsOfOrg.push
-    //   }
-    // }
-
-    displayEventsList(eventsArr);
+    displayEventsList(eventsOfOrg);
   } catch (error) {
     console.log(error);
   }
@@ -80,14 +75,19 @@ async function fetchEventsByOrgId(id) {
 
 ///// Form functions:
 
+function afterSend() {
+  
+}
+
 async function addEvent(event) {
   event.preventDefault();
 
   const newEventObject = {
     eventName: document.querySelector("#host-name").value,
-    description: document.querySelector("#host-description").value,
-    organizerId: 1, //TODO: find how to make it as the current org
-    location: document.querySelector("#host-location").value,
+    organizerId: id,
+    date: document.querySelector("#host-date").value,
+    location: document.querySelector("#host-location").value, description: document.querySelector("#host-description").value,
+    tags: document.querySelector("#host-tags").value.split(",")
   };
 
   try {
@@ -101,19 +101,16 @@ async function addEvent(event) {
     );
 
     const result = await response.json();
-    console.log(result);
+    console.log(result); //TODO: add result to the UI
 
-    event.preventDefault();
+    afterSend();
   } catch (error) {
     console.log(error);
-    event.preventDefault();
   }
 }
 
 window.onload = () => {
-  const params = new URLSearchParams(window.location.search);
-  const id = params.get("org");
   fetchEventsByOrgId(id);
-};
 
-form.addEventListener("submit", addEvent);
+  form.addEventListener("submit", addEvent);
+};
