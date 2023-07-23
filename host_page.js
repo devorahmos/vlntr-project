@@ -8,7 +8,6 @@ const form = document.querySelector("#addForm");
 const modalAlert = document.querySelector("#myModal");
 const selectLanding = document.querySelector(".select-org");
 
-/////Organizers display functions:
 async function selectOrganizer(event) {
   if (event.target.value == -1) {
     contentContainer.classList.add("d-none");
@@ -46,8 +45,6 @@ async function fetchOrganizers() {
     console.log(error);
   }
 }
-
-///// List Display Functions:
 
 function formatDate(date) {
   const MONTHS = [
@@ -151,8 +148,6 @@ async function fetchEventsByOrgId(orgId) {
   }
 }
 
-///// Form functions:
-
 function afterSend(newAddedEvent) {
   form.reset();
   displayEvent(newAddedEvent);
@@ -192,5 +187,4 @@ window.onload = () => {
   const orgsArr = fetchOrganizers();
   orgSelector.addEventListener("change", selectOrganizer);
   form.addEventListener("submit", addEvent);
-  // fetchEventsByOrgId(id);
 };

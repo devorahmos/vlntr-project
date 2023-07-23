@@ -102,6 +102,4 @@ async function loadEventList() {
   }
 }
 
-///////// End of functions
-
 window.onload = loadEventList;
