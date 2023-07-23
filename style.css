@@ -2,7 +2,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /* border: 1px solid black; */
 }
 
 html,
@@ -85,7 +84,7 @@ body {
 }
 
 .event-middle {
-  flex: 2;
+  flex: 1;
 }
 
 .event-right {
