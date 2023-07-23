@@ -14,6 +14,7 @@ body {
   font-family: "League Spartan", sans-serif;
   font-family: "Open Sans", sans-serif;
   font-family: "Ubuntu Condensed", sans-serif;
+  min-height: 100%;
 }
 
 .header,
@@ -61,7 +62,7 @@ body {
 }
 
 .event-wrapper {
-  padding: 1rem 20rem;
+  padding: 1rem 30rem;
   background-color: #f6f6e9;
 }
 
@@ -73,7 +74,6 @@ body {
   margin-bottom: 2.5rem;
   border-radius: 2rem;
   background-color: #fffff0;
-  /* z-index: 1; */
 }
 
 .event:hover {
@@ -85,8 +85,7 @@ body {
 }
 
 .event-middle {
-  flex: 1;
-  position: relative;
+  flex: 2;
 }
 
 .event-right {
@@ -98,11 +97,13 @@ body {
   color: #1e7976;
   font-size: 2rem;
   font-weight: 800;
+  flex: 1;
 }
 
 .event-subtitle {
   font-family: "Open Sans", sans-serif;
   font-size: 1.3rem;
+  flex: 1;
   transform: translateY(-0.75rem);
 }
 
@@ -112,11 +113,21 @@ body {
   font-family: "Open Sans", sans-serif;
   font-size: 0.7rem;
   border-radius: 50rem;
+}
+
+.tags-input {
+  flex: 1;
   transform: translateY(-0.5rem);
+  align-items: center;
 }
 
 .date {
   align-self: flex-end;
+}
+
+.location {
+  flex: 1;
+  align-items: flex-end;
 }
 
 .date,
@@ -135,8 +146,6 @@ body {
 .search-nav {
   background-color: #f6f6e9;
   padding: 1.5rem;
-  /* position: relative; */
-  /* z-index: 2; */
 }
 
 .search-box {
@@ -290,7 +299,7 @@ body {
 
 .page-container {
   background-color: #f6f6e9;
-  padding: 6rem;
+  padding: 5rem 15rem;
 }
 
 .event-box {
@@ -330,4 +339,8 @@ body {
 
 .publish-comment {
   height: 70%;
+}
+
+.select-org {
+  height: 100vh;
 }

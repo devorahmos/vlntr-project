@@ -6,21 +6,23 @@ const contentContainer = document.querySelector("#content-by-org");
 const eventsContainer = document.querySelector("#event-container");
 const form = document.querySelector("#addForm");
 const modalAlert = document.querySelector("#myModal");
+const selectLanding = document.querySelector(".select-org");
 
 /////Organizers display functions:
 async function selectOrganizer(event) {
-  if(event.target.value == -1){
+  if (event.target.value == -1) {
     contentContainer.classList.add("d-none");
     return;
   }
-  
+
   try {
-    const response = await fetch(`https://64b517e8f3dbab5a95c6afd3.mockapi.io/organizers/${event.target.value}`);
+    const response = await fetch(
+      `https://64b517e8f3dbab5a95c6afd3.mockapi.io/organizers/${event.target.value}`
+    );
     const orgObject = await response.json();
 
     fetchEventsByOrgId(orgObject.id);
     contentContainer.classList.remove("d-none");
-
   } catch (error) {
     console.log(error);
   }
@@ -28,7 +30,9 @@ async function selectOrganizer(event) {
 
 async function fetchOrganizers() {
   try {
-    const orgsResponse = await fetch(`https://64b517e8f3dbab5a95c6afd3.mockapi.io/organizers`);
+    const orgsResponse = await fetch(
+      `https://64b517e8f3dbab5a95c6afd3.mockapi.io/organizers`
+    );
     const orgsArr = await orgsResponse.json();
 
     const orgsDropdown = document.querySelector("#orgs-menu-list");
@@ -38,21 +42,43 @@ async function fetchOrganizers() {
     }
 
     return orgsArr;
-
   } catch (error) {
     console.log(error);
   }
-
-
 }
 
 ///// List Display Functions:
 
 function formatDate(date) {
-  const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-  const DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  const MONTHS = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  const DAYS = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
 
-  return `${DAYS[date.getDay()]}, ${MONTHS[date.getMonth()]} ${date.getDate()} ${date.getFullYear()} @ ${("0" + date.getHours()).slice(-2)}:${("0" + date.getMinutes()).slice(-2)}`;
+  return `${DAYS[date.getDay()]}, ${
+    MONTHS[date.getMonth()]
+  } ${date.getDate()} ${date.getFullYear()} @ ${("0" + date.getHours()).slice(
+    -2
+  )}:${("0" + date.getMinutes()).slice(-2)}`;
 }
 
 function displayTags(tagsArr) {
@@ -66,21 +92,22 @@ function displayTags(tagsArr) {
 }
 
 function displayEvent(event) {
-  
   const timeString = formatDate(new Date(event.date));
 
   eventsContainer.innerHTML += `<div class="event shadow">
                                 <div class="event-left d-flex flex-column">
-                                    <div class="d-flex flex-column">
-                                        <div class="event-title d-flex">${event.eventName}</div>
-                                        <div class="tags-input d-flex gap-2 mt-1">
+                                        <div class="event-title d-flex">${
+                                          event.eventName
+                                        }</div>
+                                        <div class="tags-input d-flex gap-2">
                                             ${displayTags(event.tags)}
                                         </div>
-                                    </div>
-                                    <div class="location d-flex mt-3">
+                                    <div class="location d-flex">
                                         <div class="d-flex align-items-center gap-1">
                                             <img src="./Images/Location.svg" alt="location-icon" class="border-0"/>
-                                            <div class="address">${event.location}</div>
+                                            <div class="address">${
+                                              event.location
+                                            }</div>
                                         </div>
                                     </div>
                                 </div>
@@ -88,18 +115,19 @@ function displayEvent(event) {
                                     <div class="date d-flex flex-column">
                                         <div>${timeString}</div>
                                     </div>
-                                </div>
                                 <div class="event-right d-flex flex-column">
-                                    <div class="text-center flex-grow-1">
-                                        <img src="${event.image}" class="rounded" alt="..." />
+                                    <div class="d-flex justify-content-center align-items-center flex-grow-1">
+                                        <img src="${
+                                          event.image
+                                        }" class="rounded" alt="..." />
                                     </div>
-                                    <a href="./event_info.html?e=${event.id}" class="see-more">See more</a>
                                 </div>
                               </div>`;
 }
 
 function displayEventsList(eventsArr) {
-  eventsContainer.innerHTML = '';
+  eventsContainer.innerHTML = "";
+  selectLanding.classList.remove("select-org");
 
   for (let event of eventsArr) {
     displayEvent(event);
@@ -107,12 +135,15 @@ function displayEventsList(eventsArr) {
 }
 
 async function fetchEventsByOrgId(orgId) {
-
   try {
-    const eventsResponse = await fetch(`https://64b517e8f3dbab5a95c6afd3.mockapi.io/events`);
+    const eventsResponse = await fetch(
+      `https://64b517e8f3dbab5a95c6afd3.mockapi.io/events`
+    );
     const eventsArr = await eventsResponse.json();
 
-    const eventsOfOrg = eventsArr.filter((current) => current.organizerId == orgId);
+    const eventsOfOrg = eventsArr.filter(
+      (current) => current.organizerId == orgId
+    );
 
     displayEventsList(eventsOfOrg);
   } catch (error) {
@@ -134,8 +165,9 @@ async function addEvent(event) {
     eventName: document.querySelector("#host-name").value,
     organizerId: id,
     date: document.querySelector("#host-date").value,
-    location: document.querySelector("#host-location").value, description: document.querySelector("#host-description").value,
-    tags: document.querySelector("#host-tags").value.split(",")
+    location: document.querySelector("#host-location").value,
+    description: document.querySelector("#host-description").value,
+    tags: document.querySelector("#host-tags").value.split(","),
   };
 
   try {
