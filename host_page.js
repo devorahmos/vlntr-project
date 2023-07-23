@@ -1,9 +1,50 @@
 const params = new URLSearchParams(window.location.search);
 const id = params.get("org");
 
-const form = document.querySelector("#addForm");
+const orgSelector = document.querySelector("#orgs-menu-list");
+const contentContainer = document.querySelector("#content-by-org");
 const eventsContainer = document.querySelector("#event-container");
+const form = document.querySelector("#addForm");
 const modalAlert = document.querySelector("#myModal");
+
+/////Organizers display functions:
+async function selectOrganizer(event) {
+  if(event.target.value == -1){
+    contentContainer.classList.add("d-none");
+    return;
+  }
+  
+  try {
+    const response = await fetch(`https://64b517e8f3dbab5a95c6afd3.mockapi.io/organizers/${event.target.value}`);
+    const orgObject = await response.json();
+
+    fetchEventsByOrgId(orgObject.id);
+    contentContainer.classList.remove("d-none");
+
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+async function fetchOrganizers() {
+  try {
+    const orgsResponse = await fetch(`https://64b517e8f3dbab5a95c6afd3.mockapi.io/organizers`);
+    const orgsArr = await orgsResponse.json();
+
+    const orgsDropdown = document.querySelector("#orgs-menu-list");
+
+    for (let org of orgsArr) {
+      orgsDropdown.innerHTML += `<option value="${org.id}">${org.name}</option>`;
+    }
+
+    return orgsArr;
+
+  } catch (error) {
+    console.log(error);
+  }
+
+
+}
 
 ///// List Display Functions:
 
@@ -25,6 +66,7 @@ function displayTags(tagsArr) {
 }
 
 function displayEvent(event) {
+  
   const timeString = formatDate(new Date(event.date));
 
   eventsContainer.innerHTML += `<div class="event shadow">
@@ -57,6 +99,7 @@ function displayEvent(event) {
 }
 
 function displayEventsList(eventsArr) {
+  eventsContainer.innerHTML = '';
 
   for (let event of eventsArr) {
     displayEvent(event);
@@ -64,6 +107,7 @@ function displayEventsList(eventsArr) {
 }
 
 async function fetchEventsByOrgId(orgId) {
+
   try {
     const eventsResponse = await fetch(`https://64b517e8f3dbab5a95c6afd3.mockapi.io/events`);
     const eventsArr = await eventsResponse.json();
@@ -76,28 +120,11 @@ async function fetchEventsByOrgId(orgId) {
   }
 }
 
-async function fetchOrganizers() {
-  try {
-    const orgsResponse = await fetch(`https://64b517e8f3dbab5a95c6afd3.mockapi.io/organizers`);
-    const orgsArr = await orgsResponse.json();
-
-    const orgsDropdown = document.querySelector("#orgs-menu-list");
-
-    for (let org of orgsArr){
-      orgsDropdown.innerHTML += `<li><button class="dropdown-item" type="button" id="${org.id}">${org.name}</button></li>`;
-    }
-
-  } catch (error) {
-    console.log(error);
-  }
-}
-
 ///// Form functions:
 
 function afterSend(newAddedEvent) {
-  // modalAlert.classList.add("show");
   form.reset();
-  displayEvent(newAddedEvent); //TODO: Try to solve the modal bug.
+  displayEvent(newAddedEvent);
 }
 
 async function addEvent(event) {
@@ -130,8 +157,8 @@ async function addEvent(event) {
 }
 
 window.onload = () => {
-  fetchOrganizers();
-  fetchEventsByOrgId(id);
-
+  const orgsArr = fetchOrganizers();
+  orgSelector.addEventListener("change", selectOrganizer);
   form.addEventListener("submit", addEvent);
+  // fetchEventsByOrgId(id);
 };
