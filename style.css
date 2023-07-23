@@ -13,7 +13,6 @@ body {
   font-family: "League Spartan", sans-serif;
   font-family: "Open Sans", sans-serif;
   font-family: "Ubuntu Condensed", sans-serif;
-  min-height: 100%;
 }
 
 .header,
@@ -61,13 +60,12 @@ body {
 }
 
 .event-wrapper {
-  padding: 1rem 25rem;
+  padding: 1rem 20rem;
   background-color: #f6f6e9;
 }
 
 .event {
   display: flex;
-  flex-direction: row nowrap;
   height: 15rem;
   padding: 2rem;
   margin-bottom: 2.5rem;
@@ -125,7 +123,7 @@ body {
 }
 
 .location {
-  flex: 1;
+  /* flex: 1; */
   align-items: flex-end;
 }
 
