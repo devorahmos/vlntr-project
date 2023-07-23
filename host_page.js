@@ -3,6 +3,7 @@ const id = params.get("org");
 
 const form = document.querySelector("#addForm");
 const eventsContainer = document.querySelector("#event-container");
+const modalAlert = document.querySelector("#myModal");
 
 ///// List Display Functions:
 
@@ -23,41 +24,43 @@ function displayTags(tagsArr) {
   return tagsHTML;
 }
 
-function displayEventsList(eventsArr, id) {
+function displayEvent(event) {
+  const timeString = formatDate(new Date(event.date));
+
+  eventsContainer.innerHTML += `<div class="event shadow">
+                                <div class="event-left d-flex flex-column">
+                                    <div class="d-flex flex-column">
+                                        <div class="event-title d-flex">${event.eventName}</div>
+                                        <div class="tags-input d-flex gap-2 mt-1">
+                                            ${displayTags(event.tags)}
+                                        </div>
+                                    </div>
+                                    <div class="location d-flex mt-3">
+                                        <div class="d-flex align-items-center gap-1">
+                                            <img src="./Images/Location.svg" alt="location-icon" class="border-0"/>
+                                            <div class="address">${event.location}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="event-middle d-flex">
+                                    <div class="date d-flex flex-column">
+                                        <div>${timeString}</div>
+                                    </div>
+                                </div>
+                                <div class="event-right d-flex flex-column">
+                                    <div class="text-center flex-grow-1">
+                                        <img src="${event.image}" class="rounded" alt="..." />
+                                    </div>
+                                    <a href="./event_info.html?e=${event.id}" class="see-more">See more</a>
+                                </div>
+                              </div>`;
+}
+
+function displayEventsList(eventsArr) {
 
   for (let event of eventsArr) {
-
-    const timeString = formatDate(new Date(event.date));
-
-    eventsContainer.innerHTML += `<div class="event shadow">
-                                    <div class="event-left d-flex flex-column">
-                                        <div class="d-flex flex-column">
-                                            <div class="event-title d-flex">${event.eventName}</div>
-                                            <div class="tags-input d-flex gap-2 mt-1">
-                                                ${displayTags(event.tags)}
-                                            </div>
-                                        </div>
-                                        <div class="location d-flex mt-3">
-                                            <div class="d-flex align-items-center gap-1">
-                                                <img src="./Images/Location.svg" alt="location-icon" class="border-0"/>
-                                                <div class="address">${event.location}</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="event-middle d-flex">
-                                        <div class="date d-flex flex-column">
-                                            <div>${timeString}</div>
-                                        </div>
-                                    </div>
-                                    <div class="event-right d-flex flex-column">
-                                        <div class="text-center flex-grow-1">
-                                            <img src="${event.image}" class="rounded" alt="..." />
-                                        </div>
-                                        <a href="./event_info.html?e=${event.id}" class="see-more">See more</a>
-                                    </div>
-                            </div>`;
+    displayEvent(event);
   }
-
 }
 
 async function fetchEventsByOrgId(orgId) {
@@ -73,10 +76,28 @@ async function fetchEventsByOrgId(orgId) {
   }
 }
 
+async function fetchOrganizers() {
+  try {
+    const orgsResponse = await fetch(`https://64b517e8f3dbab5a95c6afd3.mockapi.io/organizers`);
+    const orgsArr = await orgsResponse.json();
+
+    const orgsDropdown = document.querySelector("#orgs-menu-list");
+
+    for (let org of orgsArr){
+      orgsDropdown.innerHTML += `<li><button class="dropdown-item" type="button" id="${org.id}">${org.name}</button></li>`;
+    }
+
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 ///// Form functions:
 
-function afterSend() {
-  
+function afterSend(newAddedEvent) {
+  // modalAlert.classList.add("show");
+  form.reset();
+  displayEvent(newAddedEvent); //TODO: Try to solve the modal bug.
 }
 
 async function addEvent(event) {
@@ -101,15 +122,15 @@ async function addEvent(event) {
     );
 
     const result = await response.json();
-    console.log(result); //TODO: add result to the UI
 
-    afterSend();
+    afterSend(result);
   } catch (error) {
     console.log(error);
   }
 }
 
 window.onload = () => {
+  fetchOrganizers();
   fetchEventsByOrgId(id);
 
   form.addEventListener("submit", addEvent);
