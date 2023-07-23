@@ -31,7 +31,7 @@
     <fieldset
       class="search-nav d-flex align-items-center justify-content-center"
     >
-    <div class="d-flex flex-column gap-3">
+    <div class="search-card d-flex flex-column gap-3">
       <div
         class="search-box d-flex align-items-center rounded p-1 border border-black"
       >
@@ -107,7 +107,8 @@
           </li>
         </ul>
       </div>
-      <div class="map">
+      <div class="map position-relative">
+        <div>
         <p>
           <button
             class="input-box d-flex justify-content-between align-items-center p-1 border border-black"
@@ -125,11 +126,11 @@
             <span class="d-flex ms-1 flex-grow-1">Map</span>
           </button>
         </p>
-        <!-- <div style="min-height: 120px"> -->
-          <div class="collapse collapse-horizontal" id="collapseWidthExample">
-            <div class="card card-body" style="width: 300px">Google Maps</div>
+      </div>
+         <div><div class="collapse collapse-horizontal" id="collapseWidthExample">
+            <div class="card card-body z-1 position-absolute" style="width: 370px"><iframe id="mapIframe" src="https://www.google.com/maps/d/embed?mid=12sFf1To8Yq-De18p6TAaGq7aBeKS23U&ehbc=2E312F" width="340" height="480"></iframe></div>
           </div>
-        <!-- </div> -->
+        </div>
       </div>
     </div>
       </div>
@@ -224,5 +225,6 @@
     ></script>
     <script src="./event_list.js"></script>
     <script src="./search.js"></script>
+    <script src="./maps.js"></script>
   </body>
 </html>
