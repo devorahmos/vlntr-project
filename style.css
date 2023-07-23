@@ -73,6 +73,7 @@ body {
   margin-bottom: 2.5rem;
   border-radius: 2rem;
   background-color: #fffff0;
+  /* z-index: 1; */
 }
 
 .event:hover {
@@ -134,13 +135,14 @@ body {
 .search-nav {
   background-color: #f6f6e9;
   padding: 1.5rem;
+  /* position: relative; */
+  /* z-index: 2; */
 }
 
 .search-box {
   background-color: #fff;
-  width: 20rem;
+  width: 43.2rem;
   height: 2rem;
-  gap: 1rem;
 }
 
 .search-icon {
@@ -154,10 +156,6 @@ body {
   color: grey;
   height: 2rem;
   width: 10rem;
-}
-
-.map {
-  transform: translateY(4.3rem);
 }
 
 .page-wrapper {
