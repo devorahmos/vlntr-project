@@ -123,7 +123,6 @@ body {
 }
 
 .location {
-  /* flex: 1; */
   align-items: flex-end;
 }
 
@@ -164,6 +163,10 @@ body {
   width: 10rem;
 }
 
+.map-click {
+  transform: rotate(90deg);
+  margin-right: 0.2rem;
+}
 .page-wrapper {
   background-color: #f6f6e9;
   padding-top: 10rem;
