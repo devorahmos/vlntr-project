@@ -47,24 +47,20 @@ function filterDate() {
 }
 
 function filterCity() {
-  const cityInput = searchCity.value.trim();
-  if (cityInput === "") {
-    showAllEvents();
-  } else {
+  const cityInput = searchCity.value.trim().toLowerCase();
+  eventElements = document.querySelectorAll(".event");
     const filteredEvents = Array.from(eventElements).filter((eventElement) => {
       const addressElement = eventElement.querySelector(".address");
       const addressValue = addressElement.textContent.toLowerCase();
       const addressParts = addressValue.split(",");
-      const cityName = addressParts[addressParts.length - 1]
-        .trim()
-        .toLowerCase();
-
-      return cityName.includes(cityInput.toLowerCase());
+      const cityName = addressParts[addressParts.length - 1].trim().toLowerCase();
+      return cityName.includes(cityInput);
     });
 
     displayFilteredEvents(eventElements, filteredEvents);
   }
-}
+
+
 
 function handleTagFilter() {
   const checkboxes = document.querySelectorAll(".checkbox-item");
