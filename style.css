@@ -62,6 +62,7 @@ body {
 .event-wrapper {
   padding: 1rem 20rem;
   background-color: #f6f6e9;
+  min-height: 100vh;
 }
 
 .event {
@@ -342,5 +343,5 @@ body {
 }
 
 .select-org {
-  height: 100vh;
+  min-height: 100vh;
 }
