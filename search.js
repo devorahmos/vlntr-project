@@ -1,6 +1,7 @@
 const searchInput = document.querySelector(".search");
 const searchDate = document.querySelector("#date");
 const searchCity = document.querySelector("#city");
+const checkboxes = document.querySelectorAll(".checkbox-item");
 let eventElements;
 
 function handleSearch() {
@@ -82,14 +83,10 @@ function handleTagFilter() {
 }
 
 function toggleCheckboxes() {
-  const checkboxes = document.querySelectorAll(".checkbox-item");
-
   for (let i = 0; i < checkboxes.length; i++) {
     checkboxes[i].checked = selectAllCheckbox.checked;
   }
 }
-
-const checkboxes = document.querySelectorAll(".checkbox-item");
 checkboxes.forEach((checkbox) => {
   checkbox.addEventListener("change", handleTagFilter);
 });
